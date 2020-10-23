@@ -38,7 +38,18 @@ const paintFavs = () => {
     favSection.appendChild(showEl);
   }
 
-  listenButFavs();
+  //si no hay favoritos no quiero el botón de borrar todos
+  if (favSection.hasChildNodes()) {
+    //Añadir botón de borrar toda lista
+    const butEl = document.createElement("button");
+    const butText = document.createTextNode("Borrar todas");
+    butEl.classList.add("js-main__favs__del", "main__favs__del");
+    butEl.appendChild(butText);
+
+    favSection.append(butEl);
+    listenButFavs();
+    listenButDel();
+  }
 };
 
 const handleFav = (event) => {
@@ -95,6 +106,12 @@ const handleDelFav = (event) => {
   // parseInt();
   setToLocalSt();
 };
+const handleDelAll = () => {
+  favouriteList = [];
+  paintFilms();
+  paintFavs();
+  setToLocalSt();
+};
 
 const listenButFavs = () => {
   //recogo todos los li's pintados anteriormente.
@@ -102,6 +119,11 @@ const listenButFavs = () => {
   for (const show of showsToListen) {
     show.addEventListener("click", handleDelFav);
   }
+};
+
+const listenButDel = () => {
+  const buttEl = document.querySelector(".js-main__favs__del");
+  buttEl.addEventListener("click", handleDelAll);
 };
 
 const listenFilms = () => {

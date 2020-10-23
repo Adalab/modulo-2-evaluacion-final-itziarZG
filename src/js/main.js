@@ -44,7 +44,7 @@ const paintFilms = () => {
     showEl.appendChild(showNameEl);
 
     //SI ES FAVORITA modificar atributos del li
-    console.log("llamo a func fav");
+
     if (isFavorite(show.id)) {
       showEl.style.color = "grey";
       showEl.style.backgroundColor = "blueviolet";
