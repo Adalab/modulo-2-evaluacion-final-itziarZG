@@ -72,7 +72,8 @@ const getData = (word) => {
         let imgURL = "";
         //comprobación de la url para porner la de por defecto.
         if (object.show.image === null) {
-          imgURL = "//via.placeholder.com/210x295/ffffff/666666/?text=TV";
+          const text = object.show.name.toUpperCase();
+          imgURL = `//via.placeholder.com/210x295/CCCCCC/666666/?text=${text}`;
         } else {
           imgURL = object.show.image.medium;
         }
