@@ -12,7 +12,7 @@ const paintFilms = () => {
   //busco el elemento ul de la sección de resultados
   const filmsSection = document.querySelector(".js-main__search__list");
 
-  //borro lo anterior si hubiera buscando si hay
+  //borro lo anterior si hubiera
   filmsSection.innerHTML = "";
 
   //pintar elemento a elemento del array searchList
@@ -21,12 +21,12 @@ const paintFilms = () => {
 
     //creación de todos los nodos  PASAR A FUNCION!
     const showEl = document.createElement("li");
-    showEl.classList.add("js-main-search__item", "main-search__item");
+    showEl.classList.add("js-main__search__item", "main__search__item");
     const imgEl = document.createElement("img");
-    imgEl.classList.add("js-main-search__photo");
+    imgEl.classList.add("js-main__search__photo");
     const showNameText = document.createTextNode(show.name);
     const showNameEl = document.createElement("p");
-    showNameEl.classList.add("js-main-search__text");
+    showNameEl.classList.add("js-main__search__text");
 
     //creación de los elementos
     showNameEl.appendChild(showNameText);

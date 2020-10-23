@@ -1,25 +1,46 @@
-body {
+.main {
   padding: 2rem;
-  height: 100vh;
+  min-height: 100vh;
   background-color: $color-bg;
   font-family: $font-main;
+  background-color: gray;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 10% 90%;
+  grid-template-areas: "form search" "favs search";
 }
 .title {
   margin: 10px 0;
 }
+.form {
+  grid-area: form;
+}
 
-.main-search__item {
-  background-color: gray;
-  width: fit-content;
+.main__search__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.main__search__item {
   padding: 10px; //fondo?
   color: blueviolet;
   margin: 5px;
+  grid-area: search;
 }
 
 // .hidden {
 //   display: none;
 // }
 .main__fav {
-  width: 0px;
+  grid-area: favs;
   transition: width 1s ease;
+  &__item {
+    display: flex;
+
+    transform: scale(0.5);
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
