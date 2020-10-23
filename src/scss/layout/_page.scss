@@ -8,6 +8,18 @@ body {
   margin: 10px 0;
 }
 
-.hidden {
-  display: none;
+.main-search__item {
+  background-color: gray;
+  width: fit-content;
+  padding: 10px; //fondo?
+  color: blueviolet;
+  margin: 5px;
+}
+
+// .hidden {
+//   display: none;
+// }
+.main__fav {
+  width: 0px;
+  transition: width 1s ease;
 }
