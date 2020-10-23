@@ -45,7 +45,7 @@ const paintFilms = () => {
 
 //función que realiza la petició a API con la palabra que ha introducido el usuario
 const getData = (word) => {
-  const url = `http://api.tvmaze.com/search/shows?q=${word}`;
+  const url = `//api.tvmaze.com/search/shows?q=${word}`;
 
   fetch(url)
     .then((response) => response.json())
@@ -86,5 +86,5 @@ const handleClick = (ev) => {
   if (!!word) getData(word); //si el usuario no ha introducido texto, no buscamos nada
 };
 
-//starting app with listener
+//starting app with listener and looking LocalSt
 buttonEl.addEventListener("click", handleClick);

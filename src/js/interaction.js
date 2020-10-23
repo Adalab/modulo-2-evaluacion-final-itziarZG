@@ -75,6 +75,7 @@ const handleFav = (event) => {
   }
   //pintar Favoritos con modificaciones.
   paintFavs();
+  setToLocalSt();
   listenButFavs();
   // console.log(favouriteList);
 };
@@ -90,6 +91,7 @@ const handleDelFav = (event) => {
   favouriteList.splice(indexClicked, 1);
   //pintar Favoritos con modificaciones.
   paintFavs();
+  setToLocalSt();
   listenButFavs();
 };
 
