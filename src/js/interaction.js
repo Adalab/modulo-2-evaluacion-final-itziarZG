@@ -37,6 +37,8 @@ const paintFavs = () => {
     //lo añadimos a ul
     favSection.appendChild(showEl);
   }
+
+  listenButFavs();
 };
 
 const handleFav = (event) => {
@@ -61,11 +63,10 @@ const handleFav = (event) => {
     const index = favouriteList.findIndex(
       (show) => show.id === objShowClicked.id
     );
-    // show.id == fav.id); //si no está devuelve -1
-    // console.log("index", index);
+    //si no está devuelve -1
+
     if (index === -1) {
       //añadirlo al array
-      // console.log("añadirlo");
       //favouriteList.push(fav); //NO VA!
       favouriteList[favouriteList.length] = objShowClicked;
     } else {
@@ -73,11 +74,10 @@ const handleFav = (event) => {
       favouriteList.splice(index, 1);
     }
   }
-  //pintar Favoritos con modificaciones.
+  //pintar Favoritos con modificaciones,guardarlo y volver a escuchar...
   paintFavs();
+  paintFilms();
   setToLocalSt();
-  listenButFavs();
-  // console.log(favouriteList);
 };
 
 const handleDelFav = (event) => {
@@ -91,8 +91,9 @@ const handleDelFav = (event) => {
   favouriteList.splice(indexClicked, 1);
   //pintar Favoritos con modificaciones.
   paintFavs();
+  paintFilms();
+  // parseInt();
   setToLocalSt();
-  listenButFavs();
 };
 
 const listenButFavs = () => {

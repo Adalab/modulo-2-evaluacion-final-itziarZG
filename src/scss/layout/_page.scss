@@ -3,7 +3,7 @@
   min-height: 100vh;
   background-color: $color-bg;
   font-family: $font-main;
-  background-color: gray;
+  background-color: rgb(219, 219, 219);
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 10% 90%;
@@ -25,6 +25,7 @@
   color: blueviolet;
   margin: 5px;
   grid-area: search;
+  background-color: grey;
 }
 
 // .hidden {

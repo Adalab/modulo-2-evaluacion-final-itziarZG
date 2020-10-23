@@ -6,7 +6,14 @@ const buttonEl = document.querySelector(".js-main__button");
 //array global del resultado búsqueda
 let searchList = [];
 //array global del listado favoritas
-let favouriteList = [];
+// let favouriteList = [];
+
+const isFavorite = (favId) => {
+  //recorreré el array de favoritos para saber si está..
+  for (const show of favouriteList) {
+    if (show.id == favId) return true;
+  }
+};
 
 const paintFilms = () => {
   //busco el elemento ul de la sección de resultados
@@ -36,11 +43,19 @@ const paintFilms = () => {
     showEl.appendChild(imgEl);
     showEl.appendChild(showNameEl);
 
+    //SI ES FAVORITA modificar atributos del li
+    console.log("llamo a func fav");
+    if (isFavorite(show.id)) {
+      showEl.style.color = "grey";
+      showEl.style.backgroundColor = "blueviolet";
+    }
+
     //añado mi data-id para reconocerlo después al incluirlo en favs.
     showEl.dataset["id"] = show.id;
     //lo añadimos a ul
     filmsSection.appendChild(showEl);
   }
+  listenFilms();
 };
 
 //función que realiza la petició a API con la palabra que ha introducido el usuario
@@ -71,9 +86,7 @@ const getData = (word) => {
         searchList.push(newShow);
       }
 
-      paintFilms(); // "pinta" los elementos del array searchList
-      listenFilms();
-      // addtoFavArray();
+      paintFilms(); // "pinta" los elementos del array searchList y los escucha..
     });
 };
 
@@ -88,3 +101,4 @@ const handleClick = (ev) => {
 
 //starting app with listener and looking LocalSt
 buttonEl.addEventListener("click", handleClick);
+getFromLocalSt();
