@@ -1,11 +1,14 @@
 <main class="main">
-  <form class="form">
-    <input class="main__input js-main__input" type="text" placeholder="Search film"></input>
-    <button class="main__button js-main__button">Search</button>
-  </form>
-  <section class="main__fav js-main__fav">
-    <ul class="main__fav__list js-main__fav__list"></ul>
-  </section>
+  <div class="main-column">
+    <form class="form">
+      <label class="form__label" for="input">Busca series:</label>
+      <input class="form__input js-form__input" id="input" name="input" type="text" placeholder="Ej: Dexter"></input>
+      <button class="form__button js-form__button">Search</button>
+    </form>
+    <section class="main__fav js-main__fav">
+      <ul class="main__fav__list js-main__fav__list"></ul>
+    </section>
+  </div>
   <section class="main__search js-main__search">
     <ul class="main__search__list js-main__search__list"></ul>
   </section>

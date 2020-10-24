@@ -1,7 +1,7 @@
 const setToLocalSt = () => {
   let data = "";
-  data = JSON.stringify(favouriteList); //para convertir  array ahora...
-  //array convertido en string
+  data = JSON.stringify(favouriteList); //para convertir  el array a string...
+  //array convertido en string a local storage
   localStorage.setItem("favs", data);
 };
 

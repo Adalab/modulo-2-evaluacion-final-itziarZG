@@ -1,31 +1,39 @@
 const paintFavs = () => {
-  //busco el elemento ul de la sección favoritos
+  //busco el elemento ul de la sección favoritos donde pintaré
   const favSection = document.querySelector(".js-main__fav__list");
 
   //borro lo anterior si hubiera
   favSection.innerHTML = "";
 
+  //creación del titutlo de la sección
+  const titleEl = document.createElement("h2");
+  const titleText = document.createTextNode("Mis series favoritas");
+  titleEl.appendChild(titleText);
+  titleEl.classList.add("main__fav__title");
+  favSection.appendChild(titleEl);
+
   //pintar elemento a elemento del array favList
   for (const show of favouriteList) {
     //cada serie será una 'li' con una img,un botón con clase js-main-fav-remove y un texto.
 
-    //creación de todos los nodos
+    //creación del li
     const showEl = document.createElement("li");
-    showEl.classList.add("js-main__fav__item", "main__fav__item");
+    showEl.classList.add("js-main__fav__item", "main__fav__item"); //clases del li
     const imgEl = document.createElement("img");
-    imgEl.classList.add("js-main__fav__photo");
-    const showNameText = document.createTextNode(show.name);
+    imgEl.classList.add("main__fav__photo"); //clase de la img
+    const showNameText = document.createTextNode(show.name); //texto del p nombre
     const showNameEl = document.createElement("p");
-    showNameEl.classList.add("js-main-fav__text");
-    const delBtnEl = document.createElement("div");
+    showNameEl.classList.add("main__fav__text"); // clase del nombre
+    const delBtnEl = document.createElement("div"); //minibotón X para quitarlo de favoritos.
     const delBtnCont = document.createTextNode("X");
 
-    //creación de los elementos
+    //creación de los elementos "totales"
     showNameEl.appendChild(showNameText);
     imgEl.setAttribute("src", show.url);
+
     delBtnEl.appendChild(delBtnCont);
     //añado la clase main__fav__btn para escuchar después.
-    delBtnEl.classList.add("js-main__fav__btn");
+    delBtnEl.classList.add("js-main__fav__btn", "main__fav__btn");
 
     //creación del li con esos 3 elementos
     showEl.appendChild(imgEl);
@@ -37,6 +45,7 @@ const paintFavs = () => {
     //lo añadimos a ul
     favSection.appendChild(showEl);
   }
+  listenButFavs();
 
   //si no hay favoritos no quiero el botón de borrar todos
   if (favSection.hasChildNodes()) {
@@ -47,7 +56,6 @@ const paintFavs = () => {
     butEl.appendChild(butText);
 
     favSection.append(butEl);
-    listenButFavs();
     listenButDel();
   }
 };
@@ -110,7 +118,10 @@ const handleDelAll = () => {
   favouriteList = [];
   paintFilms();
   paintFavs();
-  setToLocalSt();
+  localStorage.removeItem("favs");
+  //si no hay lista de favoritos, quiero quitar el texto tmb
+  const favSection = document.querySelector(".js-main__fav__list");
+  favSection.innerHTML = "";
 };
 
 const listenButFavs = () => {

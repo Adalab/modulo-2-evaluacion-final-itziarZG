@@ -1,5 +1,17 @@
-.page__header {
+.header {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 3rem;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    text-align: center;
+    color: blueviolet;
+    text-transform: uppercase;
+    margin: 1rem;
+    text-shadow: 1px 1px grey;
+  }
+  &__icon {
+    color: blueviolet;
+    transform: scale(2);
+  }
 }

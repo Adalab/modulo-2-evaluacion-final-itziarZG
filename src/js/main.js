@@ -1,12 +1,12 @@
 "use strict";
 
 //elementos a "escuchar"
-const buttonEl = document.querySelector(".js-main__button");
+const buttonEl = document.querySelector(".js-form__button");
 
 //array global del resultado búsqueda
 let searchList = [];
 //array global del listado favoritas
-// let favouriteList = [];
+let favouriteList = [];
 
 const isFavorite = (favId) => {
   //recorreré el array de favoritos para saber si está..
@@ -70,13 +70,16 @@ const getData = (word) => {
       searchList = [];
       for (const object of data) {
         let imgURL = "";
+
         //comprobación de la url para porner la de por defecto.
         if (object.show.image === null) {
+          //nombre de la serie para añadirle a la imagen por defecto...
           const text = object.show.name.toUpperCase();
-          imgURL = `//via.placeholder.com/210x295/CCCCCC/666666/?text=${text}`;
+          imgURL = `//via.placeholder.com/210x295/CCCCCC/8A2BE2/?text=${text}`;
         } else {
           imgURL = object.show.image.medium;
         }
+        //guardo los datos en este objeto
         const newShow = {
           name: object.show.name,
           id: object.show.id,
@@ -94,7 +97,7 @@ const getData = (word) => {
 //función manejadora de la búsqueda... llama a getData para el fetch con la palabra clave...
 const handleClick = (ev) => {
   ev.preventDefault(); // para que  no recargue la página en seguida...
-  const inputEl = document.querySelector(".js-main__input"); //escucho ahora el elemento input para tener el valor cuando el click
+  const inputEl = document.querySelector(".js-form__input"); //escucho ahora el elemento input para tener el valor cuando el click
   const word = inputEl.value;
 
   if (!!word) getData(word); //si el usuario no ha introducido texto, no buscamos nada
@@ -103,3 +106,4 @@ const handleClick = (ev) => {
 //starting app with listener and looking LocalSt
 buttonEl.addEventListener("click", handleClick);
 getFromLocalSt();
+window.alert;
