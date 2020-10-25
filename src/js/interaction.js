@@ -6,12 +6,14 @@ const paintFavs = () => {
   favSection.innerHTML = "";
 
   //creación del titutlo de la sección
-  const titleEl = document.createElement("h2");
-  const titleText = document.createTextNode("Mis series favoritas");
-  titleEl.appendChild(titleText);
-  titleEl.classList.add("main__fav__title");
-  favSection.appendChild(titleEl);
-
+  if (favouriteList.length != 0) {
+    const titleEl = document.createElement("h2");
+    const titleText = document.createTextNode("Mis series favoritas");
+    titleEl.appendChild(titleText);
+    titleEl.classList.add("main__fav__title");
+    favSection.appendChild(titleEl);
+    favSection.style.border = "2px dotted blueviolet";
+  }
   //pintar elemento a elemento del array favList
   for (const show of favouriteList) {
     //cada serie será una 'li' con una img,un botón con clase js-main-fav-remove y un texto.
@@ -108,6 +110,14 @@ const handleDelFav = (event) => {
 
   //quitarlo del array...
   favouriteList.splice(indexClicked, 1);
+
+  // comprobar si se ha vaciado la lista para borrar el título y el local storage
+  if (favouriteList.length === 0) {
+    const ulFav = document.querySelector(".js-main__fav__list");
+    ulFav.innerHTML = "";
+    localStorage.removeItem("favs");
+    ulFav.style.border = "0px";
+  }
   //pintar Favoritos con modificaciones.
   paintFavs();
   paintFilms();
