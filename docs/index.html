@@ -5,22 +5,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Evaluación Final Módula 2 Itziar Zameza García</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://file.myfontastic.com/qp5cjiE5fvo34QeehvjMUR/icons.css" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/main.css" />
 </head>
 
 <body>
-  <header>
-    <h1 class="title">Buscador de series</h1>
+  <header class="header">
+    <div class="icon-videocamera header__icon"></div>
+    <h1 class="header__title">Buscador de series</h1>
+    <div class="icon-videocamera header__icon"></div>
   </header>
   <main class="main">
-    <form class="form">
-      <input class="main__input js-main__input" type="text" placeholder="Search film"></input>
-      <button class="main__button js-main__button">Search</button>
-    </form>
-    <section class="main__fav js-main__fav">
-      <ul class="main__fav__list js-main__fav__list"></ul>
-    </section>
+    <div class="main-column">
+      <form class="form">
+        <label class="form__label" for="input">Busca series:</label>
+        <input class="form__input js-form__input" id="input" name="input" type="text" placeholder="Ej: Dexter"></input>
+        <button class="form__button js-form__button">Search</button>
+      </form>
+      <section class="main__fav js-main__fav">
+        <ul class="main__fav__list js-main__fav__list"></ul>
+      </section>
+    </div>
     <section class="main__search js-main__search">
       <ul class="main__search__list js-main__search__list"></ul>
     </section>
