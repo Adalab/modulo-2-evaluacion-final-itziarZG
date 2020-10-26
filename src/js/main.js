@@ -43,7 +43,7 @@ const paintFilms = () => {
     showEl.appendChild(imgEl);
     showEl.appendChild(showNameEl);
 
-    //SI ES FAVORITA modificar atributos del li
+    //SI ES FAVORITA modificar atributos del li. función isFavorite.
 
     if (isFavorite(show.id)) {
       showEl.style.color = "grey";
@@ -106,4 +106,14 @@ const handleClick = (ev) => {
 //starting app with listener and looking LocalSt
 buttonEl.addEventListener("click", handleClick);
 getFromLocalSt();
-window.alert;
+
+//TRICKY START MESSAGE
+const num = Math.round(Math.random() * 1000);
+var w = window.open("", "Mensaje personal de Itziar", "width=300,height=200");
+w.document.write(
+  `Bienvenida a mi página de búsqueda de series.Eres la visitante número ${num}. Este mensaje desaparecerá en 3s`
+);
+w.focus();
+setTimeout(function () {
+  w.close();
+}, 3000);

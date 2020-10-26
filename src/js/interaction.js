@@ -12,7 +12,6 @@ const paintFavs = () => {
     titleEl.appendChild(titleText);
     titleEl.classList.add("main__fav__title");
     favSection.appendChild(titleEl);
-    favSection.style.border = "2px dotted blueviolet";
   }
   //pintar elemento a elemento del array favList
   for (const show of favouriteList) {
@@ -62,20 +61,38 @@ const paintFavs = () => {
   }
 };
 
+const rePaintFilm = (id) => {
+  console.log(id);
+  id = parseInt(id);
+  const search = document.querySelector(".js-main__search__list");
+  const showLi = search.querySelector(`[data-id="${id}"`);
+
+  // buscar si showLi está en favoritos. para quitarle los nuevos atributos...
+  if (isFavorite(id)) {
+    //borrar atributos anteriores..
+    showLi.removeAttribute("style");
+  } else {
+    // o ponérselos...
+    showLi.style.color = "grey";
+    showLi.style.backgroundColor = "blueviolet";
+  }
+};
+
 const handleFav = (event) => {
   //añadir/quitar la serie como objeto a un array de favoritos
-  //tengo el id del show aquí... event.currentTarget.dataset["id"];
+  //tengo el id del show aquí...event.currentTarget.dataset["id"];
 
   const objShowClicked = searchList.find(
     (show) => show.id == event.currentTarget.dataset["id"]
   );
 
-  //show encontrado en objShowClicked y es el que hay que introducir en el array de favs. SI no está o quitarlo si está
+  //show encontrado en objShowClicked y es el que hay que introducir en el array de favs SI no está o quitarlo si está
+
+  //Antes de tocar array favourites pintar las modificaciones en la lista de búsqueda.
+  rePaintFilm(event.currentTarget.dataset["id"]);
 
   //la primera vez, push directamente
   if (favouriteList.length == 0) {
-    // console.log("primera vez");
-    // console.log(objShowClicked);
     //favouriteList.push(fav); //NO VA!
     favouriteList[0] = objShowClicked;
     // console.log(favouriteList);
@@ -84,8 +101,8 @@ const handleFav = (event) => {
     const index = favouriteList.findIndex(
       (show) => show.id === objShowClicked.id
     );
-    //si no está devuelve -1
 
+    //si no está devuelve -1
     if (index === -1) {
       //añadirlo al array
       //favouriteList.push(fav); //NO VA!
@@ -97,7 +114,6 @@ const handleFav = (event) => {
   }
   //pintar Favoritos con modificaciones,guardarlo y volver a escuchar...
   paintFavs();
-  paintFilms();
   setToLocalSt();
 };
 
@@ -112,23 +128,20 @@ const handleDelFav = (event) => {
   favouriteList.splice(indexClicked, 1);
 
   // comprobar si se ha vaciado la lista para borrar el título y el local storage
-  if (favouriteList.length === 0) {
-    const ulFav = document.querySelector(".js-main__fav__list");
-    ulFav.innerHTML = "";
-    localStorage.removeItem("favs");
-    ulFav.style.border = "0px";
+  if (favouriteList.length == 0) {
+    handleDelAll(); //ya que equivale a haber borrado todas pero de una en euna...
   }
   //pintar Favoritos con modificaciones.
   paintFavs();
-  paintFilms();
-  // parseInt();
   setToLocalSt();
+  //pintar modificaciones en lista búsqueda...
+  paintFilms();
 };
 const handleDelAll = () => {
   favouriteList = [];
   paintFilms();
   paintFavs();
-  localStorage.removeItem("favs");
+  localStorage.clear();
   //si no hay lista de favoritos, quiero quitar el texto tmb
   const favSection = document.querySelector(".js-main__fav__list");
   favSection.innerHTML = "";
