@@ -62,7 +62,6 @@ const paintFavs = () => {
 };
 
 const rePaintFilm = (id) => {
-  console.log(id);
   id = parseInt(id);
   const search = document.querySelector(".js-main__search__list");
   const showLi = search.querySelector(`[data-id="${id}"`);

@@ -111,7 +111,7 @@ getFromLocalSt();
 const num = Math.round(Math.random() * 1000);
 var w = window.open("", "Mensaje personal de Itziar", "width=300,height=200");
 w.document.write(
-  `Bienvenida a mi página de búsqueda de series.Eres la visitante número ${num}. Este mensaje desaparecerá en 3s`
+  `Bienvenida a mi página de búsqueda de series. Eres la visitante número ${num}. Este mensaje desaparecerá en 3s`
 );
 w.focus();
 setTimeout(function () {
