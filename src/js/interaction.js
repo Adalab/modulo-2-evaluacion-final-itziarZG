@@ -94,7 +94,6 @@ const handleFav = (event) => {
   if (favouriteList.length == 0) {
     //favouriteList.push(fav); //NO VA!
     favouriteList[0] = objShowClicked;
-    // console.log(favouriteList);
   } else {
     // a partir de que haya contenido buscarlo ahora en array favs para introducirlo o borrarlo..
     const index = favouriteList.findIndex(
@@ -159,10 +158,21 @@ const listenButDel = () => {
   buttEl.addEventListener("click", handleDelAll);
 };
 
+const myconsole = (ev) => {
+  const id = ev.currentTarget.dataset["id"];
+  const serie = searchList.find((serie) => {
+    if (serie.id === parseInt(id)) {
+      console.log("entro if");
+      return serie.name;
+    }
+  });
+  console.log("la serie clickada es ", serie);
+};
+
 const listenFilms = () => {
   //recogo todos los li's pintados anteriormente.
   const showsToListen = document.querySelectorAll(".js-main__search__item");
   for (const show of showsToListen) {
-    show.addEventListener("click", handleFav);
+    show.addEventListener("click", myconsole);
   }
 };

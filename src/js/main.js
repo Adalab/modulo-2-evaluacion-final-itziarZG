@@ -34,14 +34,20 @@ const paintFilms = () => {
     const showNameText = document.createTextNode(show.name);
     const showNameEl = document.createElement("p");
     showNameEl.classList.add("js-main__search__text");
+    const showGen = document.createElement("p");
+
+    const showGenText = document.createTextNode(show.genres);
 
     //creación de los elementos
     showNameEl.appendChild(showNameText);
     imgEl.setAttribute("src", show.url);
 
+    showGen.appendChild(showGenText);
+
     //creación del li con esos dos elementos
     showEl.appendChild(imgEl);
     showEl.appendChild(showNameEl);
+    showEl.appendChild(showGen);
 
     //SI ES FAVORITA modificar atributos del li. función isFavorite.
 
@@ -84,6 +90,7 @@ const getData = (word) => {
           name: object.show.name,
           id: object.show.id,
           url: imgURL,
+          genres: object.show.genres,
         };
 
         //añado el nuevo objeto al array de resultado búsqueda.
